@@ -4,7 +4,10 @@ export default class SearchBar extends Component {
     render() {
         return (
             <div className="searchbar">
-                HI IM WHERE THE SEACRCH BAR IS
+                 <form onSubmit={this.props.handleChangeSubmit}>
+                     <input type="text" onChange={this.props.handleChange} />
+                     <button>Click me</button>
+                 </form>
             </div>
         )
     }

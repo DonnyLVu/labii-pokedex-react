@@ -4,12 +4,12 @@ export default class PokeItem extends Component {
     render() {
         return (
             <div className='poke-item'>
-                <div className='name'>Name: {this.props.name}</div>
+                <div className='name'>{this.props.name}</div>
                 <img className='image' src={this.props.image} alt={this.props.name} />
-                <div className='type1'>Primary Type: {this.props.type_1}</div>
-                <div className='type2'>Secondary Type: {this.props.type_2}</div>
-                <div className="attack">{this.props.attack}</div>
-                <div className="defence">{this.props.defence}</div>
+                <div className='type'>Primary Type: {this.props.type_1}</div>
+                <div className='egg-group'>Egg Type: {this.props.egg_group_1}</div>
+                <div className="attack">Attack: {this.props.attack}</div>
+                <div className="defense">Defense: {this.props.defense}</div>
             </div>
         )
     }
