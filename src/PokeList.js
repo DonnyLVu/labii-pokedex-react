@@ -10,13 +10,13 @@ export default class PokeList extends Component {
                 <div className='pokemon-list'>
                 {
                     this.props.pokeData.filter((item) => {
-                        if (!this.props.type_1) return true;
-                        if (item.type_1 === this.props.type_1) return true;
+                        if (!this.props.type) return true;
+                        if (item.type_1 === this.props.type) return true;
                         return false;
                     })
                     .filter((item) => {
-                        if (!this.props.egg_group_1) return true;
-                        if (item.egg_group_1 === this.props.egg_group_1) return true;
+                        if (!this.props.egg) return true;
+                        if (item.egg_group_1 === this.props.egg) return true;
                         return false;
                     })
                     .filter((item) => {
