@@ -16,6 +16,8 @@ h1{
   font-family: Arial, Helvetica;
   display: flex;
   justify-content: center;
+  background-color:rgb(238, 41, 41);
+  margin-top: 0;
 }
 .App{
   justify-content: center;
@@ -23,8 +25,8 @@ h1{
   align-items: center;
 }
 .footer{
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-bottom: 0px;
+  padding: 0;
   background-color:rgb(238, 41, 41);
   position: fixed;
   bottom: 0;

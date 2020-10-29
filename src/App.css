@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; 
+  margin-top: 100px;
+}
+
+.image {
+  width: 200px;
+  height: auto;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: bold;
+}
