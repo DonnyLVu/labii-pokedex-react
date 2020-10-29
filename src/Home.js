@@ -1,4 +1,5 @@
 import './App.css';
+import request from 'superagent';
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
@@ -6,10 +7,10 @@ import SearchBar from './SearchBar'
 import PokeList from './PokeList'
 import Data from './Data';
 import Sort from './Sort';
+import { Link } from 'react-router-dom';
 
 
-
-export default class App extends React.Component {
+export default class Home extends React.Component {
 
   state = {
   type_1: '',
@@ -46,7 +47,10 @@ handleChangeSubmit = (e) => {
     return (
       <div className="App">
         <Header/>
-        Search Bar Below
+        <Link to="/" className="links" >Home</Link>
+        <Link to="/SearchPage" className="links" >Search Page</Link>
+
+        
         <SearchBar  handleChange={this.handleChange} handleChangeSubmit={this.handleChangeSubmit} />
         Search Bar Above
         <Sort handleChangeType={this.handleChangeType} handleChangeEgg={this.handleChangeEgg}/>
