@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: silver;
 }
 
 .App-logo {
@@ -54,26 +53,4 @@
 .name {
   font-size: 2em;
   font-weight: bold;
-}
-
-button{
-  background-color: rgb(238, 41, 41);
-  color: white;
-  padding: .3em 10px;
-  text-align: center;
-  font-size: 1em;
-  margin: 10px;
-  border-radius: 100px;
-}
-button:hover{
-  background-color: rgb(152, 41, 20);
-}
-
-.poke-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: silver;
-  padding-bottom: 20px;
-  border-radius: 10px 10px 0 0;
 }
