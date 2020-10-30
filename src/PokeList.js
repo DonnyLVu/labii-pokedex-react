@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PokeItem from './PokeItem'
+import './App.css';
 
 
 
 export default class PokeList extends Component {
     render() {
         return (
-            <div>
+            <div className='poke-item'>
                 <div className='pokemon-list'>
                 {
                     this.props.pokeData.filter((item) => {
