@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import SearchBar from './SearchBar'
 import PokeList from './PokeList'
-import Data from './Data';
+// import Data from './Data';
 import Sort from './Sort';
 import { Link } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ export default class Home extends React.Component {
   egg_group_1: '',
   change:'',
   submit:'',
+  pokeArray: [],
 }
 
 handleChangeType = (e) => {
@@ -34,7 +35,7 @@ handleChange = async (e) => {
   this.setState({
     change: e.target.value,
   })
-  await this.fetchPokemonAPI();
+  await this.fetchPokemon();
 }
 
 handleChangeSubmit = async (e) => {
@@ -42,14 +43,18 @@ handleChangeSubmit = async (e) => {
   this.setState({
     submit: this.state.change,
   })
-  await this.fetchPokemonAPI();
-}
-componentDidMount = async () => {
-  const response = await fetch.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-  console.log(response.body.results)
-  this.setState({ Data: response.body.results });
+  await this.fetchPokemon();
 }
 
+
+componentDidMount = async () => {
+  await this.fetchPokemon();
+}
+
+fetchPokemon = async () => {
+  const response = await fetch.get(`https:alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.submit}&perPage=980&type_1=${this.state.type_1}`)
+  this.setState({ pokeArray: response.body.results })
+}
 
   render() {
     return (
@@ -57,12 +62,11 @@ componentDidMount = async () => {
         <Header/>
         <Link to="/" className="links" >Home</Link>
         <Link to="/SearchPage" className="links" >Search Page</Link>
-
         
         <SearchBar  handleChange={this.handleChange} handleChangeSubmit={this.handleChangeSubmit} />
         Search Bar Above
         <Sort handleChangeType={this.handleChangeType} handleChangeEgg={this.handleChangeEgg}/>
-        <PokeList pokeData={Data} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
+        <PokeList pokeData={this.state.pokeArray} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
         <Footer/>
       </div>
     )
