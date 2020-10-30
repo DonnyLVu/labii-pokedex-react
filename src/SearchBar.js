@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css';
 
 export default class SearchBar extends Component {
     render() {
@@ -7,7 +6,7 @@ export default class SearchBar extends Component {
             <div className="searchbar">
                  <form onSubmit={this.props.handleChangeSubmit}>
                      <input type="text" onChange={this.props.handleChange} />
-                     <button>SEARCH</button>
+                     <button>Click me</button>
                  </form>
             </div>
         )
