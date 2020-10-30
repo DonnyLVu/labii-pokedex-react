@@ -1,5 +1,5 @@
 import './App.css';
-import request from 'superagent';
+import fetch from 'superagent';
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
@@ -29,19 +29,27 @@ handleChangeEgg = (e) => {
     egg_group_1: e.target.value,
   })
 }
-handleChange = (e) => {
+handleChange = async (e) => {
   e.preventDefault()  
   this.setState({
     change: e.target.value,
   })
+  await this.fetchPokemonAPI();
 }
 
-handleChangeSubmit = (e) => {
+handleChangeSubmit = async (e) => {
   e.preventDefault()
   this.setState({
     submit: this.state.change,
   })
+  await this.fetchPokemonAPI();
 }
+componentDidMount = async () => {
+  const response = await fetch.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
+  console.log(response.body.results)
+  this.setState({ Data: response.body.results });
+}
+
 
   render() {
     return (
