@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import SearchBar from './SearchBar'
 import PokeList from './PokeList'
-import Data from './Data';
+// import Data from './Data';
 import Sort from './Sort';
 import { Link } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ export default class Home extends React.Component {
   egg_group_1: '',
   change:'',
   submit:'',
+  pokeData: [],
 }
 
 handleChangeType = (e) => {
@@ -51,8 +52,8 @@ componentDidMount = async () => {
 }
 
 fetchPokemon = async () => {
-  const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.pokemon}`)
-  this.setState({ pokemon: response.body.results })
+  const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.pokeData}`)
+  this.setState({ pokeData: response.body.results })
 }
 
   render() {
@@ -61,12 +62,11 @@ fetchPokemon = async () => {
         <Header/>
         <Link to="/" className="links" >Home</Link>
         <Link to="/SearchPage" className="links" >Search Page</Link>
-
         
         <SearchBar  handleChange={this.handleChange} handleChangeSubmit={this.handleChangeSubmit} />
         Search Bar Above
         <Sort handleChangeType={this.handleChangeType} handleChangeEgg={this.handleChangeEgg}/>
-        <PokeList pokeData={Data} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
+        <PokeList pokeData={this.state.pokeData} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
         <Footer/>
       </div>
     )
