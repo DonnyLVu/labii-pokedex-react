@@ -17,7 +17,7 @@ export default class Home extends React.Component {
   egg_group_1: '',
   change:'',
   submit:'',
-  pokeData: [],
+  pokeArray: [],
 }
 
 handleChangeType = (e) => {
@@ -52,8 +52,8 @@ componentDidMount = async () => {
 }
 
 fetchPokemon = async () => {
-  const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.pokeData}`)
-  this.setState({ pokeData: response.body.results })
+  const response = await fetch.get(`https:alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.submit}&perPage=980&type_1=${this.state.type_1}`)
+  this.setState({ pokeArray: response.body.results })
 }
 
   render() {
@@ -66,7 +66,7 @@ fetchPokemon = async () => {
         <SearchBar  handleChange={this.handleChange} handleChangeSubmit={this.handleChangeSubmit} />
         Search Bar Above
         <Sort handleChangeType={this.handleChangeType} handleChangeEgg={this.handleChangeEgg}/>
-        <PokeList pokeData={this.state.pokeData} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
+        <PokeList pokeData={this.state.pokeArray} type={this.state.type_1} egg={this.state.egg_group_1} submitProp={this.state.submit} />
         <Footer/>
       </div>
     )
