@@ -34,7 +34,7 @@ handleChange = async (e) => {
   this.setState({
     change: e.target.value,
   })
-  await this.fetchPokemonAPI();
+  await this.fetchPokemon();
 }
 
 handleChangeSubmit = async (e) => {
@@ -42,14 +42,18 @@ handleChangeSubmit = async (e) => {
   this.setState({
     submit: this.state.change,
   })
-  await this.fetchPokemonAPI();
-}
-componentDidMount = async () => {
-  const response = await fetch.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-  console.log(response.body.results)
-  this.setState({ Data: response.body.results });
+  await this.fetchPokemon();
 }
 
+
+componentDidMount = async () => {
+  await this.fetchPokemon();
+}
+
+fetchPokemon = async () => {
+  const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.pokemon}`)
+  this.setState({ pokemon: response.body.results })
+}
 
   render() {
     return (
