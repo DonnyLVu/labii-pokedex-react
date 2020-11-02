@@ -4,7 +4,7 @@ export default class Header extends Component {
     render() {
         return (
             <div>
-                <h1>HI IM THE HEADER</h1>
+                <h1>HI IM THE HEADER TO POKEDEX</h1>
             </div>
         )
     }
